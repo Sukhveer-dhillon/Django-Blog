@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+# to deploy website
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -160,3 +162,6 @@ EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
 
 # SECRET_KEY="6381197f4b684804a2a30395089a36d6279e8cf8afc12c56"
 # DEBUG_VALUE="True"
+
+# to deploy site
+django_heroku.settings(locals())
