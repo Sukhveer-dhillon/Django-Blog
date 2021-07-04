@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)lh!y1n8=8t!b3(1zgccl$6bcl69vs6y1v!$2qqg8m#j4g2crl'
+# SECRET_KEY = 'django-insecure-)lh!y1n8=8t!b3(1zgccl$6bcl69vs6y1v!$2qqg8m#j4g2crl'
+# to deploy to heroku
+SECRET_KEY=os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+# to deploy to heroku
+ALLOWED_HOSTS = ['saddadjangoapp.herokuapp.com']
 
 
 # Application definition
@@ -155,3 +158,5 @@ EMAIL_USE_TLS=True
 EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
 
+# SECRET_KEY="6381197f4b684804a2a30395089a36d6279e8cf8afc12c56"
+# DEBUG_VALUE="True"
