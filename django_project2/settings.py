@@ -28,7 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY=os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+# to deploy
+DEBUG=(os.environ.get('DEBUG_VALUE'=='True'))
 # to deploy to heroku
 ALLOWED_HOSTS = ['saddadjangoapp.herokuapp.com']
 
@@ -165,3 +167,5 @@ EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
 
 # to deploy site
 django_heroku.settings(locals())
+# deployed at
+# https://saddadjangoapp.herokuapp.com/
