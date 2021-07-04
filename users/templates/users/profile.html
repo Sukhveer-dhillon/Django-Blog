@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+<!-- load crispy form -->
+{% load crispy_forms_tags %}
+
+<!-- jinja format -->
+<!-- override this in base template -->
+{% block content %}
+<!-- we dont need to pass user it is there in django -->
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{user.username}}</h2>
+      <p class="text-secondary">{{user.email}}</p>
+    </div>
+  </div>
+  <!-- FORM HERE -->
+  <!-- add enctype for user profile update -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Profile Info</legend>
+      <!-- added form here (as p will render forn in paragraphs) -->
+      <!-- form.as_p -dont need now due to crispy forms -->
+      {{ u_form|crispy }}
+      {{ p_form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Update</button>
+    </div>
+
+  </form>
+</div>
+
+{% endblock content %}
