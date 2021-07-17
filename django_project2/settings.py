@@ -23,14 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-)lh!y1n8=8t!b3(1zgccl$6bcl69vs6y1v!$2qqg8m#j4g2crl'
+
 # to deploy to heroku
-SECRET_KEY=os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # to deploy
-DEBUG=(os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # to deploy to heroku
 ALLOWED_HOSTS = ['saddadjangoapp.herokuapp.com']
 
@@ -38,11 +38,11 @@ ALLOWED_HOSTS = ['saddadjangoapp.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    #add this(needed to correctly search templates and databases from our application)
+    # add this(needed to correctly search templates and databases from our application)
     'blog.apps.BlogConfig',
-    #add this for users app
+    # add this for users app
     'users.apps.UsersConfig',
-    #add this for crispy forms
+    # add this for crispy forms
     # at end also add template pack
     'crispy_forms',
     'django.contrib.admin',
@@ -131,10 +131,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-import os
 STATIC_URL = '/static/'
 # to deploy to heroku
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Default primary key field type
@@ -142,25 +141,24 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # added
-CRISPY_TEMPLATE_PACK='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # login redirect target change
-LOGIN_REDIRECT_URL='blog-home'
+LOGIN_REDIRECT_URL = 'blog-home'
 # login required route
-LOGIN_URL='login'
+LOGIN_URL = 'login'
 # for profile images(to store uploaded file where to)
-import os
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # sending email for password reset
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT= 587
-EMAIL_USE_TLS=True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # you can fill these equal to your email and password
-EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 # SECRET_KEY="6381197f4b684804a2a30395089a36d6279e8cf8afc12c56"
 # DEBUG_VALUE="True"
